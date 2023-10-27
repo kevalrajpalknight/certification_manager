@@ -1,0 +1,24 @@
+# Not required.
+.git
+.mypy_cache
+
+# Local, shouldn't be brought in, may interfere with container's versions.
+node_modules
+output/
+**/__pycache__
+**/*.pyc
+webpack-stats.json
+release.py
+*.sqlite3
+bundle-breakdown.html
+
+# May contain passwords and other secrets, any production local_settings.py
+# should be volume mounted in.
+.env
+*.authtoken
+secrets/
+
+# Docker specific
+Dockerfile
+docker-compose.yml
+.dockerignore
