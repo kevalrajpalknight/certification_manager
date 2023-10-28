@@ -1,5 +1,5 @@
 from django.contrib.auth import get_user_model
-from rest_framework import generics
+from rest_framework import generics, filters
 
 from .serializers import UserSerializer
 
@@ -9,6 +9,6 @@ class UserListView(generics.ListCreateAPIView):
         get_user_model()
         .objects.select_related("address")
         .prefetch_related("certifications", "profession")
-        .all()
+        .all().order_by('name')
     )
     serializer_class = UserSerializer
