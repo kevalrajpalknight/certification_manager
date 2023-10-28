@@ -33,7 +33,7 @@ class UserListView(generics.ListCreateAPIView):
             get_user_model()
             .objects.select_related("address")
             .prefetch_related("certifications", "profession")
-            .all()
+            .exclude(is_superuser=True)
             .order_by("name")
         )
         return queryset
